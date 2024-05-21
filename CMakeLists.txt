@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package (Eigen3 3.3 REQUIRED NO_MODULE)
+find_package(HDF5 REQUIRED COMPONENTS C CXX)
 
 include_directories(${EIGEN_INCLUDE_DIR})
 
@@ -19,4 +20,4 @@ add_library(convolution convolution.cpp convolution.hpp)
 add_library(correlate correlate.cpp correlate.hpp)
 add_executable(main main.cpp)
 
-target_link_libraries(main convolution correlate Eigen3::Eigen)
+target_link_libraries(main convolution correlate Eigen3::Eigen hdf5::hdf5 hdf5::hdf5_cpp)

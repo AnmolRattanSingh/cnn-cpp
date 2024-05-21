@@ -12,6 +12,9 @@ public:
     int in_width;
     std::tuple<int, int, int> output_shape;
     std::tuple<int, int, int, int> kernels_shape;
+    Eigen::MatrixXd input;
+    Eigen::Matrix4d output;
+
     Eigen::Matrix3d kernels;
     Eigen::Matrix4d biases;
 

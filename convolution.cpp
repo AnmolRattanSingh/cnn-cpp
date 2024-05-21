@@ -16,3 +16,17 @@ Convolution::Convolution(tuple<int, int, int> in_shape, int kernel_size, int dep
     biases = Eigen::Matrix4d::Random();
 }
 
+Eigen::MatrixXd Convolution::forward(Eigen::MatrixXd input){
+    this->input = input;
+
+    this->output = this->biases;
+
+    for(int i = 0; i < this->depth; i++){
+        for(int j = 0; j < this->in_depth; j++){
+            cout << this->output.col(i) << endl;
+        }
+    }
+
+    return this->output;
+}
+
