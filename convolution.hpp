@@ -1,27 +1,25 @@
 #pragma once
 
+#include <eigen3/Eigen/Dense>
+#include <eigen3/unsupported/Eigen/CXX11/Tensor>
 #include <tuple>
 #include <vector>
-#include <eigen3/Eigen/Dense>
 
 class Convolution {
-public:
+   public:
     int depth;
     int in_depth;
     int in_height;
     int in_width;
-    std::tuple<int, int, int> output_shape;
-    std::tuple<int, int, int, int> kernels_shape;
-    Eigen::MatrixXd input;
-    Eigen::Matrix4d output;
+    Eigen::Tensor<float, 3> input;
+    Eigen::Tensor<float, 3> output;
 
-    Eigen::Matrix3d kernels;
-    Eigen::Matrix4d biases;
-
+    Eigen::Tensor<float, 4> kernels;
+    Eigen::Tensor<float, 3> biases;
 
     Convolution(std::tuple<int, int, int> in_shape, int kernel_size, int depth);
 
-    Eigen::MatrixXd forward(Eigen::MatrixXd input);
+    Eigen::Tensor<float, 3> forward(Eigen::Tensor<float, 3> input);
 
     Eigen::MatrixXd backward(Eigen::MatrixXd output_grad, int learning_rate);
 };
